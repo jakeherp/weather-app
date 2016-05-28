@@ -1,16 +1,3 @@
-var icons = {
-				"clear-day" : "B", 
-				"clear-night" : "C", 
-				"rain" : "R", 
-				"snow" : "G", 
-				"sleet" : "X", 
-				"wind" : "S", 
-				"fog" :"N", 
-				"cloudy" : "Y",
-				"partly-cloudy-day" : "H", 
-				"partly-cloudy-night" : "I"
-			};
-
 var cities = {
 				"london"		: 	{coords: {latitude: 51.5074, longitude:0.1278}},
 				"berlin"		: 	{coords: {latitude: 52.5200, longitude:13.4050}},
@@ -33,7 +20,18 @@ function loadWeather(cityCoords){
 			console.log(json);
 			$("#current_temp").html(Math.round(json.currently.temperature)+"&#176;C");
 			$("#current_summary").html(json.currently.summary);
-			$("#current_temp").attr("data-icon",icons[json.currently.icon]);
+			$("#current_img").html('<img src="img/'+json.currently.icon+'.svg" alt="'+json.currently.summary+'" class="icons">')
+
+			for (i = 0; i <= 3; i++) {
+				var today = new Date();
+				var day = new Date(today.getFullYear(), today.getMonth(), today.getDate()+i);
+				var date = day.getDate() + "/" + (day.getMonth()+1) + "/" + day.getFullYear();
+
+				$("#day_"+i+"_date").html(date);
+				$("#day_"+i+"_temp").html(Math.round(json.daily.data[i].temperatureMin)+"-"+Math.round(json.daily.data[i].temperatureMax)+"&#176;C");
+				$("#day_"+i+"_summary").html(json.daily.data[i].summary);
+				$("#day_"+i+"_img").html('<img src="img/'+json.daily.data[i].icon+'.svg" alt="'+json.currently.summary+'" class="icons-sm">')
+			}
 		},
 		error: function(e){
 			console.log(e.message);

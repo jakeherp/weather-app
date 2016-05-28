@@ -5,39 +5,80 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="publisher" content="PCServe Media Ltd">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/stylesheet.css">
 	<link rel="apple-touch-icon" href="img/icon.png"/>
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
 	<script src="js/app.js"></script>
 </head>
 
 <body>
-	<div data-role="page">
+	<div class="off-canvas-wrapper">
+		<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+			<div class="off-canvas position-left" id="menu" data-off-canvas>
+				<button class="close-button" aria-label="Close menu" type="button" data-close>
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<ul class="vertical menu">
+					<li class="title">Select a City</li>
+					<li><a href="#" class="city" data-close>Current Location <i class="fa fa-location-arrow" aria-hidden="true"></i></a></li>
+					<li><a href="#" class="city" data-close>London</a></li>
+					<li><a href="#" class="city" data-close>Berlin</a></li>
+					<li><a href="#" class="city" data-close>New York</a></li>
+					<li><a href="#" class="city" data-close>Los Angeles</a></li>
+					<li><a href="#" class="city" data-close>San Francisco</a></li>
+				</ul>
+			</div>
 
-		<div data-role="panel" id="menu">
-			<ul data-theme="d" data-role="listview">
-				<li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-				<li data-role="list-divider">Select a City</li>
-				<li><a href="#" class="city" data-rel="close">Current Location</a></li>
-				<li><a href="#" class="city" data-rel="close">London</a></li>
-				<li><a href="#" class="city" data-rel="close">Berlin</a></li>
-				<li><a href="#" class="city" data-rel="close">New York</a></li>
-				<li><a href="#" class="city" data-rel="close">Los Angeles</a></li>
-				<li><a href="#" class="city" data-rel="close">San Francisco</a></li>
-			</ul>
-		</div>
+			<div class="off-canvas-content" data-off-canvas-content>
+				<header>
+					<button type="button" class="float-left" data-toggle="menu"><i class="fa fa-lg fa-bars"></i></button>
+					<button type="button" class="float-right rotate" onClick="window.location.reload()"><i class="fa fa-lg fa-refresh"></i></button>
+					<h1>My Weather</h1>
+				</header>
+				<div class="content">
+					<div class="icons" id="current_img"></div>
+					<h1 id="current_temp" class="icon"></h1>
+					<p id="current_summary"></p>
+					<p id="location"></p>
 
-		<header data-role="header" data-position="fixed" data-theme="c">
-			<h1>My Weather</h1>
-			<a href="#menu" data-role="button" data-icon="bars" data-iconpos="notext" data-iconshadow="false">Menu</a>
-		</header>
-		<div data-role="content" class="content">
-			<h1 id="current_temp" class="icon" data-icon="A"></h1>
-			<p id="current_summary"></p>
-			<p id="location"></p>
+					<hr>
+
+					<div class="row">
+						<div class="medium-4 columns">
+							<h1 id="day_1_date"></h1>
+							<div class="icons-sm" id="day_1_img"></div>
+							<h3 id="day_1_temp" class="icon"></h3>
+							<p id="day_1_summary"></p>
+						</div>
+						<div class="medium-4 columns">
+							<h1 id="day_2_date"></h1>
+							<div class="icons-sm" id="day_2_img"></div>
+							<h3 id="day_2_temp" class="icon"></h3>
+							<p id="day_2_summary"></p>
+						</div>
+						<div class="medium-4 columns">
+							<h1 id="day_3_date"></h1>
+							<div class="icons-sm" id="day_3_img"></div>
+							<h3 id="day_3_temp" class="icon"></h3>
+							<p id="day_3_summary"></p>
+						</div>
+					</div>
+
+					<hr>
+				</div>
+
+				<footer>
+					&copy; 2016 <a href="http://herper.uk/">Jacob Herper</a>
+				</footer>
+			</div>
 		</div>
 	</div>
+	<script>
+		$(document).foundation();
+	</script>
 </body>
 </html>
